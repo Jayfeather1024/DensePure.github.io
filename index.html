@@ -227,17 +227,6 @@
 <script type="text/javascript" src="../js/hidebib.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic'
       rel='stylesheet' type='text/css'>
-<head>
-    <title>Diffusion Models for Adversarial Purification</title>
-    <meta property="og:description" content="Diffusion Models for Adversarial Purification"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:creator" content="@ArashVahdat">
-    <meta name="twitter:title" content="Diffusion Models for Adversarial Purification">
-    <meta name="twitter:description"
-          content="We propose <i>DiffPure</i> that uses diffusion models for adversarial purification.">
-    <meta name="twitter:image" content="">
-</head>
 
 <body>
 <div class="container">
@@ -249,18 +238,18 @@
         <center>
             <div class="author-row">
                 <div class="col-3 text-center"><a href="https://xiaocw11.github.io/">Chaowei Xiao</a><sup>1,3</sup></div>
-                <div class="col-3 text-center"><a href="">Zhongzhu Chen</a><sup>2</sup>
+                <div class="col-3 text-center"><a href="https://sites.google.com/umich.edu/zhongzhc/home?pli=1">Zhongzhu Chen</a><sup>2</sup>
                 </div>
-                <div class="col-3 text-center"><a href="">Kun Jin</a><sup>2</sup>
+                <div class="col-3 text-center"><a href="https://scholar.google.com/citations?user=T8i4IpgAAAAJ&hl=en">Kun Jin</a><sup>2</sup>
                 </div>
-                <div class="col-3 text-center"><a href="">Jiongxiao Wang</a><sup>1</sup>
+                <div class="col-3 text-center"><a href="https://jayfeather1024.github.io/jxwang.github.io/">Jiongxiao Wang</a><sup>1</sup>
                 </div>
-                <div class="col-3 text-center"><a href="">Weili Nie</a><sup>3</sup></div>
-                <div class="col-3 text-center"><a href="">Mingyan Liu</a><sup>2</sup></div>
+                <div class="col-3 text-center"><a href="https://weilinie.github.io/">Weili Nie</a><sup>3</sup></div>
+                <div class="col-3 text-center"><a href="https://liu.engin.umich.edu/">Mingyan Liu</a><sup>2</sup></div>
                 <div class="col-3 text-center"><a href="http://tensorlab.cms.caltech.edu/users/anima/">Anima
                     Anandkumar</a><sup>3,4</sup></div>
-                <div class="col-3 text-center"><a href="">Bo Li</a><sup>5</sup></div>
-                <div class="col-3 text-center"><a href="">Dawn Song</a><sup>6</sup></div>
+                <div class="col-3 text-center"><a href="https://aisecure.github.io/">Bo Li</a><sup>5</sup></div>
+                <div class="col-3 text-center"><a href="http://people.eecs.berkeley.edu/~dawnsong/">Dawn Song</a><sup>6</sup></div>
                 
             </div>
 
@@ -336,282 +325,175 @@
         </div>
     </div>
 
-
-    <!--    <section id="news">-->
-    <!--        <h2>News</h2>-->
-    <!--        <hr>-->
-    <!--        <div class="row">-->
-    <!--            &lt;!&ndash; <div><span class="material-icons"> event </span> [Dec 2021] Paper presented at NeurIPS 2021.</div>-->
-    <!--            <div><span class="material-icons"> event </span> [Feb 2022] Our <a href="https://github.com/NVlabs/denoising-diffusion-gan">code</a> has been released.</div>&ndash;&gt;-->
-    <!--            <div><span class="material-icons"> event </span> [Jan 2022] Our paper is accepted to ICLR 2022 as a spotlight paper!</div>-->
-    <!--            <div><span class="material-icons"> event </span> [Dec 2021] <a href="https://twitter.com/ArashVahdat/status/1471513155054362625">Twitter thread</a> explaining the work in detail.</div>-->
-    <!--            <div><span class="material-icons"> event </span> [Dec 2021] <a href="https://nvlabs.github.io/denoising-diffusion-gan">Project page</a> released!</div>-->
-    <!--            <div><span class="material-icons"> event </span> [Dec 2021] Draft released on <a href="https://arxiv.org/abs/2112.07804">arXiv</a>!</div>-->
-    <!--        </div>-->
-    <!--    </section>-->
-
     <section id="abstract"/>
     <h2>Abstract</h2>
     <hr>
     <div class="flex-row">
         <p>
-            Diffusion models have been recently employed to improve certified robustness through the process of denoising. However, the theoretical understanding of why diffusion models are able to improve the certified robustness is still lacking, preventing from further improvement. In this study, we close this gap by analyzing the fundamental properties of diffusion models and establishing the conditions under which they can enhance certified robustness. This deeper understanding allows us to propose a new method DensePure, designed to improve the certified robustness of a pretrained model (i.e. classifier). Given an (adversarial) input, DensePure consists of multiple runs of denoising via the reverse process of the diffusion model (with different random seeds) to get multiple reversed samples, which are then passed through the classifier, followed by majority voting of inferred labels to make the final prediction. This design of using multiple runs of denoising is informed by our theoretical analysis of the conditional distribution of the reversed sample. Specifically, when the data density of a clean sample is high, its conditional density under the reverse process in a diffusion model is also high; thus sampling from the latter conditional distribution can purify the adversarial example and return the corresponding clean sample with a high probability. By using the highest density point in the conditional distribution as the reversed sample, we identify the robust region of a given instance under the diffusion model's reverse process. We show that this robust region is a union of multiple convex sets, and is potentially much larger than the robust regions identified in previous works. In practice, DensePure can approximate the label of the high density region in the conditional distribution so that it can enhance certified robustness. We conduct extensive experiments to demonstrate the effectiveness of DensePure by evaluating its certified robustness given a standard model via randomized smoothing. We show that DensePure is consistently better than existing methods on ImageNet, with 7% improvement on average.
+            Diffusion models have been recently employed to improve certified robustness through the process of denoising. 
+            However, the theoretical understanding of why diffusion models are able to improve the certified robustness is 
+            still lacking, preventing from further improvement. In this study, we close this gap by analyzing the fundamental 
+            properties of diffusion models and establishing the conditions under which they can enhance certified robustness. 
+            This deeper understanding allows us to propose a new method DensePure, designed to improve the certified robustness 
+            of a pretrained model (i.e. classifier). Given an (adversarial) input, DensePure consists of multiple runs of denoising 
+            via the reverse process of the diffusion model (with different random seeds) to get multiple reversed samples, which 
+            are then passed through the classifier, followed by majority voting of inferred labels to make the final prediction. 
+            This design of using multiple runs of denoising is informed by our theoretical analysis of the conditional distribution 
+            of the reversed sample. Specifically, when the data density of a clean sample is high, its conditional density under 
+            the reverse process in a diffusion model is also high; thus sampling from the latter conditional distribution can purify 
+            the adversarial example and return the corresponding clean sample with a high probability. By using the highest density 
+            point in the conditional distribution as the reversed sample, we identify the robust region of a given instance under 
+            the diffusion model's reverse process. We show that this robust region is a union of multiple convex sets, and is 
+            potentially much larger than the robust regions identified in previous works. In practice, DensePure can approximate the 
+            label of the high density region in the conditional distribution so that it can enhance certified robustness. We conduct 
+            extensive experiments to demonstrate the effectiveness of DensePure by evaluating its certified robustness given a 
+            standard model via randomized smoothing. We show that DensePure is consistently better than existing methods on ImageNet, 
+            with 7% improvement on average.
         </p>
     </div>
     </section>
 
-    <section id="teaser-image">
-        </p>
-        <figure style="margin-top: 20px; margin-bottom: 20px;">
-            <center><img width="70%" src="./assets/teaser_v7.jpeg" style="margin-bottom: 20px;"></center>
-            <p class="caption">
-                Given a pre-trained diffusion model, we add noise to adversarial images following the forward diffusion
-                process with a small diffusion timestep <i>t*</i> to get diffused images, from which we recover clean
-                images through the reverse denoising process before classification. Adaptive attacks backpropagate
-                through the SDE to get full gradients of our defense system.
-            </p>
-            <p class="caption">
-            </p>
-        </figure>
-    </section>
-
-
-    <!--    <section id="intro"/>-->
-    <!--    <h2>Background</h2>-->
-    <!--    <hr>-->
-    <!--    <div class="flex-row">-->
-    <!--        <p>-->
-    <!--            Neural networks are vulnerable to adversarial attacks: Adding imperceptible perturbations to the input can-->
-    <!--            easily mislead trained neural networks to predict incorrect classes. Thus, the problem we are solving is to-->
-    <!--            defend neural networks against adversarial attacks. Currently, there are two forms of defense for neural-->
-    <!--            networks:-->
-    <!--            1) <i>Adversarial training</i>, which trains neural networks on adversarial examples. Its drawback is that-->
-    <!--            most-->
-    <!--            adversarial training methods can only defend against a specific attack that they are trained with. Recent-->
-    <!--            works on defending against unseen threats add a carefully designed threat model into their adversarial-->
-    <!--            training pipeline, but they suffer from a significant performance drop. Additionally, the computational-->
-    <!--            complexity of adversarial training is usually higher than standard training.-->
-    <!--            2) <i>Adversarial purification</i>, which relies on generative models to purify adversarially perturbed-->
-    <!--            images-->
-    <!--            before classification. Compared to the adversarial training methods, adversarial purification can defend-->
-    <!--            against unseen threats in a plug-n-play manner without re-training the classifiers. But their performance-->
-    <!--            usually falls behind current adversarial training methods.-->
-    <!--            Our method belongs to the second form of defense, which means it can defend against unseen threats.-->
-    <!--            Furthermore, it achieves better robustness performance than the state-of-the-art adversarial training-->
-    <!--            methods.-->
-    <!--        </p>-->
-    <!--    </div>-->
-
-    <!--    <figure style="width: 100%">-->
-    <!--        <center><img width="55%" src="assets/trilemma.gif"></center>-->
-    <!--    </figure>-->
-    <!--    <div class="flex-row">-->
-    <!--        <p>-->
-    <!--            The figure above summarizes how mainstream generative frameworks tackle the trilemma. Generative adversarial-->
-    <!--            networks (GANs) generate high-quality samples rapidly, but they are known for poor mode coverage.-->
-    <!--            Conversely, variational autoencoders (VAEs) and normalizing flows cover data modes faithfully, but they-->
-    <!--            often suffer from low sample quality. Recently, diffusion models have emerged as powerful generative models.-->
-    <!--            These models demonstrate surprisingly good results in sample quality, beating GANs in image generation. They-->
-    <!--            also feature good mode coverage and sample diversity, indicated by high likelihood. Diffusion models have-->
-    <!--            already been applied to a variety of generation tasks. However, sampling from them often requires thousands-->
-    <!--            of neural network evaluations, making their application to real-world problems expensive. <b>In this paper,-->
-    <!--            we tackle the generative learning trilemma by reformulating denoising diffusion models specifically for fast-->
-    <!--            sampling while maintaining strong mode coverage and sample quality. </b>-->
-    <!--        </p>-->
-    <!--    </div>-->
-    </section>
-
-
-    <!--    <section id="advantages"/>-->
-    <!--    <h2>Why is Sampling from Denoising Diffusion Models so Slow?</h2>-->
-    <!--    <hr>-->
-    <!--    <div class="flex-row">-->
-    <!--        <p> Diffusion models define a forward diffusion process that maps data to noise by gradually perturbing the-->
-    <!--            input data. Data generation is achieved using a parametrized reverse process that performs iterative-->
-    <!--            denoising in thousands of steps, starting from random noise. In this paper, we investigate the slow sampling-->
-    <!--            issue of diffusion models and we observe that diffusion models commonly assume that the denoising-->
-    <!--            distribution in the reverse can be approximated by Gaussian distributions. However, it is known that the-->
-    <!--            Gaussian assumption holds only in the infinitesimal limit of small denoising steps, which leads to the-->
-    <!--            requirement of a large number of steps in the reverse process. When the reverse process uses larger step-->
-    <!--            sizes (i.e., it has fewer denoising steps), we need a non-Gaussian multimodal distribution for modeling the-->
-    <!--            denoising distribution. Intuitively, in image synthesis, the multimodal distribution arises from the fact-->
-    <!--            that multiple plausible clean images may correspond to the same noisy image. </p>-->
-    <!--    </div>-->
-    <!--    <figure style="width: 100%">-->
-    <!--        <center><img width="90%" src="assets/denoising.gif"></center>-->
-    <!--        <p class="caption" style="margin-bottom: 24px;">-->
-    <!--            <b>Top</b>: Evolution of a 1D data distribution q(x<sub>0</sub>) according to the forward diffusion process.-->
-    <!--            <b>Bottom</b>: Visualizations of the true denoising distribution when conditioning on a fixed x<sub>5</sub>-->
-    <!--            with varying step sizes shown in different colors. The true denoising distribution for a small step size-->
-    <!--            (shown in yellow) is close to a Gaussian distribution. However, it becomes more complex and multimodal as-->
-    <!--            the step size increases.-->
-    <!--        </p>-->
-    <!--    </figure>-->
-    <!--    </section>-->
-
-    <section id="novelties"/>
-    <h2>Adversarial Purification with Diffusion Models</h2>
+    <section id="theroetical analysis"/>
+    <h2>How Difffusion Models Enhance Certified Robustness</h2>
     <hr>
     <div class="flex-row">
-        <p>We propose a new adversarial purification method, termed DiffPure, that uses the forward and reverse
-            processes of diffusion models to purify adversarial images. Specifically, given a pre-trained diffusion
-            model, our method consists of two steps: (i) we first add noise to adversarial examples by following the
-            forward process with a small diffusion timestep, and (ii) we then solve the reverse stochastic differential
-            equation (SDE) to recover clean images from the diffused adversarial examples. An important design parameter
-            in our method is the choice of diffusion timestep, since it
-            represents the amount of noise added during the forward process. Our theoretical analysis reveals that the
-            noise needs to be high enough to remove adversarial perturbations but not too large to destroy the label
-            semantics of purified images.
-        </p>
-        <p>Furthermore, strong adaptive attacks require gradient
-            backpropagation through the SDE solver in our method, which suffers from the memory issue if implemented
-            naively. In particular, denoted by N the number of function evaluations in solving the SDE, the required
-            memory increases by O(N). Thus, we propose to use the adjoint method to efficiently calculate full gradients
-            of the reverse SDE with a constant memory cost.
+        <p>Through theroetical analysis, we first show that given a diffusion model, solving reverse-SDE will generate a 
+            conditional distribution based on the scaled adversarial samle, which will have high density on data region with 
+            high data density and near to adversarial samples. This distribution also implies that a reversed sample will have 
+            the groundtruth label with a high probability if data region with the ground-truth label has high enough data density.
+            Then we can characterize the robust region for data region with ground-truth label under certain assumptions.
         </p>
     </div>
     <figure style="width: 100%">
-        <center><img width="65%" src="assets/smile_glasses_v0.jpeg"></center>
+        <center><img width="65%" src="assets/D_sub_figure.png"></center>
         <p class="caption" style="margin-bottom: 24px;">
-            The first column shows adversarial examples produced by attacking attribute classifiers using
-            PGD &#120001<sub>&#8734</sub> (&#949=16/255). Our method purifies the adversarial examples by first diffusing 
-            them up to the timestep t=0.3, following the forward diffusion process, and then, it removes perturbations 
-            using the reverse generative SDE. The middle three columns show the intermediate results of solving the 
-            reverse SDE in DiffPure at different timesteps. We observe that the purified images at t=0 match the clean images (last column).
+            An illustration of the robust region, where x0, x1, x2 are samples with ground-truth label and 
+            x3 is a sample with another label. xa = x0+a is an adversarial sample which classification is correct 
+            but xa is not reversed back to x0. rsub(x0) < r(x0) shows our claim that the union leads to a larger robust radius.
         </p>
     </figure>
     </section>
 
 
-    <section id="results">
-        <h2>Main Results</h2>
-        <hr>
-        <div class="flex-row">
-            <p>
-                We empirically compare our method against the latest adversarial training and adversarial purification
-                methods on various strong adaptive attack benchmarks.
-                Extensive experiments on three datasets (i.e., CIFAR-10, ImageNet and CelebA-HQ) across multiple
-                classifier architectures (i.e., ResNet, WideResNet and ViT) demonstrate the state-of-the-art performance
-                of our method.
-            </p>
-            <p>
-                <b>- Comparison with adversarial training.</b> Compared to the state-of-the-art adversarial training
-                methods against AutoAttack &#120001<sub>&#8734</sub> ,
-                our method shows absolute improvements of up to +7.68% on ImageNet in robust accuracy.
-            </p>
-            <figure style="width: 100%;">
-                <a href="assets/comp_baselines_3.jpeg">
-                    <center><img width="50%" src="assets/comp_baselines_3.jpeg"></center>
-                </a>
-                <p class="caption" style="margin-bottom: 24px;">
-                    Comparison with state-of-the-art adversarial training methods against AutoAttack on ImageNet with
-                    ResNet-50 and DeiT-S, respectively.
-                </p>
-            </figure>
-
-            <p>
-                <b>- Comparison with other purification methods.</b> In comparison to the state-of-the-art adversarial
-                purification methods against the BPDA+EOT attack, we have absolute
-                improvements of +11.31% on CIFAR-10 in robust accuracy.
-            </p>
-            <figure style="width: 100%;">
-                <a href="assets/comp_baselines_2.jpeg">
-                    <center><img width="33%" src="assets/comp_baselines_2.jpeg"></center>
-                </a>
-                <p class="caption" style="margin-bottom: 24px;">
-                    Comparison with latest purification methods against the adaptive black-box BPDA+EOT attack
-                    on WideResNet-28-10 for CIFAR-10.
-                </p>
-            </figure>
-
-            <p>
-                <b>- Defense against unseen threats.</b> Compared to the latest adversarial training methods against
-                unseen threats, our method
-                exhibits a more significant absolute improvement (up to +36% in robust accuracy).
-            </p>
-            <figure style="width: 100%;">
-                <a href="assets/comp_baselines_1.jpeg">
-                    <center><img width="50%" src="assets/comp_baselines_1.jpeg"></center>
-                </a>
-                <p class="caption" style="margin-bottom: 24px;">
-                    Comparison with state-of-the-art defense methods against unseen threat models (including AutoAttack
-                    &#120001<sub>&#8734</sub>, AutoAttack &#120001<sub>2</sub>, and StdAdv) on ResNet-50 for
-                    CIFAR-10.
-                </p>
-            </figure>
-        </div>
-        <!--        <p>-->
-        <!--            For instance, compared to adversarial training methods against AutoAttack &#120001<sub>&#8734</sub> ,-->
-        <!--            our method-->
-        <!--            shows absolute improvements of up to +5.44% on CIFAR-10 and up to +7.68% on ImageNet, respectively, in-->
-        <!--            robust accuracy.-->
-        <!--            Moreover, compared to the latest adversarial training methods against unseen threats, our method-->
-        <!--            exhibits a more significant absolute improvement (up to +36% in robust accuracy).-->
-        <!--            In comparison to adversarial purification methods against the BPDA+EOT attack, we have absolute-->
-        <!--            improvements of +11.31% on CIFAR-10 and +15.63% on CelebA-HQ, respectively, in robust accuracy.-->
-        <!--        </p>-->
-        <!--        <figure style="width: 100%;">-->
-        <!--            <a href="assets/comp_baselines.jpeg">-->
-        <!--                <img width="100%" src="assets/comp_baselines.jpeg">-->
-        <!--            </a>-->
-        <!--            <p class="caption" style="margin-bottom: 24px;">-->
-        <!--                <b>Left:</b>-->
-        <!--                Comparison with state-of-the-art defense methods against unseen threat models on ResNet-50 for CIFAR-10.-->
-        <!--                <b>Middle:</b>-->
-        <!--                Comparison with latest adversarial purification methods against the adaptive black-box BPDA+EOT attack-->
-        <!--                on-->
-        <!--                WideResNet-28-10 for CIFAR-10.-->
-        <!--                <b>Right:</b>-->
-        <!--                Comparison with state-of-the-art adversarial training methods against AutoAttack on ImageNet with-->
-        <!--                ResNet-50 and DeiT-S, respectively.-->
-        <!--            </p>-->
-        <!--        </figure>-->
-
+    <section id="framework"/>
+    <h2>DensePure Framework</h2>
+    <hr>
+    <div class="flex-row">
+        <p>
+            Theroetical analysis on diffusion models allows us to propose a new method DensePure to improve the certified 
+            robustness of any given classifier by more effectively using the diffusion model.
+            DensePure incorporates two steps: (i) using the reverse process of the diffusion model to obtain a sample of the
+            posterior data distribution conditioned on the adversarial input; and (ii) repeating the reverse process
+            multiple times with different random seeds to approximate the label of high density region in the
+            conditional distribution via a majority vote. In particular, given an adversarial input, we repeatedly
+            feed it into the reverse process of the diffusion model to get multiple reversed examples and feed
+            them into the classifier to get their labels. We then apply the majority vote on the set of labels to get
+            the final predicted label.
+        </p>
+    </div>
+    <figure style="width: 100%">
+        <center><img width="65%" src="assets/densepure_flowchart.png"></center>
+        <p class="caption" style="margin-bottom: 24px;">
+            Pipeline of DensePure
+        </p>
+    </figure>
     </section>
 
 
-    <section id="advantages"/>
+    <section id="results"/>
+    <h2>Main Results</h2>
+    <hr>
+    <div class="flex-row">
+        <p>
+            We empirically compare our methods against other certified robustness baselines under randomized smoothing, especially Carlini et al. (2022), which is also 
+            an off-the-shelf method with diffusion models. Extensive experiments and ablation study on CIFAR-10 and ImageNet demonstrate the state-of-the-art performance
+            of DensePure.
+        </p>
+        <p>
+            <b>- Compared with existing works.</b> Compared to both on-the-shelf and off-the-shelf existing randomized smoothing methods, our method shows large improvement on
+            CIFAR-10 in most cases and consistently better than existing methods on ImageNet, with 7% improvement on average.
+        </p>
+        <figure style="width: 100%;">
+            <a href="assets/table.png">
+                <center><img width="50%" src="assets/table.png"></center>
+            </a>
+            <p class="caption" style="margin-bottom: 24px;">
+                Certified accuracy compared with existing works. The certified accuracy at  = 0 for each
+                model is in the parentheses. The certified accuracy for each cell is from the respective papers except
+                Carlini et al. (2022). Our diffusion model and classifier are the same as Carlini et al. (2022), where
+                the off-the-shelf classifier uses ViT-based architectures trained on a large dataset (ImageNet-22k).
+                Comparison with state-of-the-art adversarial training methods against AutoAttack on ImageNet with
+                ResNet-50 and DeiT-S, respectively.
+            </p>
+        </figure>
+
+        <p>
+            <b>- Compared with Carlini et al. (2022).</b> To better understand the importance of DensePure design, that approximates 
+            the label of the high density region in the conditionaldistribution, we compare DensePure in a more fine-grained manner 
+            with Carlini et al. (2022), which also uses the diffusion model. Experiment results show that our method is consistently 
+            better than Carlini et al. (2022) to reach higher certified robustness.
+        </p>
+        <figure style="width: 100%;">
+            <a href="assets/main_results.jpg">
+                <center><img width="33%" src="assets/main_results.jpg"></center>
+            </a>
+            <p class="caption" style="margin-bottom: 24px;">
+                Comparing our method vs Carlini et al. (2022) on CIFAR-10 and ImageNet. The lines
+                represent the certified accuracy with different L2 perturbation bound with different Gaussian noise
+                σ ∈ {0.25, 0.50, 1.00}.
+            </p>
+        </figure>
+        
+    </div>
+    </section>
+
+    <section id="limitations"/>
     <h2>Our Insights and Limitations</h2>
     <hr>
     <div class="flex-row">
         <p>
-            DiffPure uses different noise levels in the diffusion process of a diffusion model to smooth out
-            perturbations and then recovers clean images in the denoising process. It can maintain the class semantics
-            during purification due to the generative power of diffusion models. It also introduces
-            proper noise injection in the forward and reverse processes for a stronger defense. These factors
-            make DiffPure better than previous methods. Thus, we think DiffPure is more transparent than adversarial
-            training that instead heavily relies on specialized training strategies.
+            In this work, we theoretically prove that the diffusion model could purify adversarial examples back
+            to the corresponding clean sample with high probability, as long as the data density of the corresponding 
+            clean samples is high enough. Our theoretical analysis characterizes the conditional
+            distribution of the reversed samples given the adversarial input, generated by the diffusion model
+            reverse process. Using the highest density point in the conditional distribution as the deterministic
+            reversed sample, we identify the robust region of a given instance under the diffusion model reverse 
+            process, which is potentially much larger than previous methods. Our analysis inspires us to
+            propose an effective pipeline DensePure, for adversarial robustness. We conduct comprehensive
+            experiments to show the effectiveness of DensePure by evaluating the certified robustness via the
+            randomized smoothing algorithm. Note that DensePure is an off-the-shelf pipeline that does not
+            require training a smooth classifier. Our results show that DensePure achieves the new SOTA certified 
+            robustness for perturbation with L2-norm. We hope that our work sheds light on an in-depth
+            understanding of the diffusion model for adversarial robustness.
         </p>
         <p>
-            Our method has two major limitations: (i) the purification process takes much time (proportional to the
-            diffusion timestep), making our method inapplicable to the real-time tasks,
-            and (ii) diffusion models are sensitive to image colors, making our method incapable of defending
-            color-related
-            corruptions. It is interesting to either apply recent works on accelerating diffusion models or design new
-            diffusion models specifically for model robustness to overcome these two limitations.
+            One main limitation of our method is the time complexity, because DensePure requires repeating the reverse
+            process multiple times. In this paper, we use fast sampling to reduce the time complexity and show that
+            with reduced sampling and majority votes numbers, we can still achieve nontrivial certified accuracy. We leave the more
+            advanced fast sampling strategy as the future direction.
         </p>
     </div>
     </section>
+
 
     <section id="paper">
         <h2>Paper</h2>
         <hr>
         <div class="flex-row">
             <div style="box-sizing: border-box; padding: 16px; margin: auto;">
-                <a href=""><img class="screenshot" src="assets/diffusion_purification_preview.jpg"></a>
+                <a href=""><img class="screenshot" src="assets/arxiv_preview.jpg"></a>
             </div>
             <div style="width: 50%; font-size: 20px;">
                 <p><b>Diffusion Models for Adversarial Purification</b></p>
-                <p>Weili Nie, Brandon Guo, Yujia Huang, Chaowei Xiao,
-                    Arash Vahdat, Anima Anandkumar</p>
-                <!--                <p><i>* Work done during an internship at NVIDIA.</i></p>-->
-                <div><span class="material-icons"> description </span><a href="https://arxiv.org/abs/2205.07460"> arXiv
+                <p>Chaowei Xiao, Zhongzhu Chen, Kun Jin, Jiongxiao Wang, Weili Nie, Mingyan Liu, 
+                    Anima Anandkumar, Bo Li, Dawn Song</p>
+                <div><span class="material-icons"> description </span><a href="https://arxiv.org/pdf/2211.00322.pdf"> arXiv
                     version</a></div>
-                <div><span class="material-icons"> insert_comment </span><a href="assets/nie2022diffpure.bib">
+                <div><span class="material-icons"> insert_comment </span><a href="https://scholar.googleusercontent.com/scholar.bib?q=info:nDcvPmoyt60J:scholar.google.com/&output=citation&scisdr=CgXjz32ZELfQxS5A1tA:AAGBfm0AAAAAY7JGztDSBBpEr07oruE0kSsLwp_Nv6xq&scisig=AAGBfm0AAAAAY7JGznDwl4LydBuZj-gATgB5YDEsk8_m&scisf=4&ct=citation&cd=-1&hl">
                     BibTeX</a>
                 </div>
                 <div><span class="material-icons"> integration_instructions </span><a
-                        href="https://github.com/NVlabs/DiffPure"> Code</a></div>
+                        href="https://arxiv.org/pdf/2211.00322.pdf"> Code</a></div>
             </div>
         </div>
     </section>
@@ -619,10 +501,10 @@
     <section id="bibtex">
         <h2>Citation</h2>
         <hr>
-        <pre><code>@inproceedings{nie2022DiffPure,
-  title={Diffusion Models for Adversarial Purification},
-  author={Nie, Weili and Guo, Brandon and Huang, Yujia and Xiao, Chaowei and Vahdat, Arash and Anandkumar, Anima},
-  booktitle = {International Conference on Machine Learning (ICML)},
+        <pre><code>@article{xiao2022densepure,
+  title={DensePure: Understanding Diffusion Models towards Adversarial Robustness},
+  author={Xiao, Chaowei and Chen, Zhongzhu and Jin, Kun and Wang, Jiongxiao and Nie, Weili and Liu, Mingyan and Anandkumar, Anima and Li, Bo and Song, Dawn},
+  journal={arXiv preprint arXiv:2211.00322},
   year={2022}
 }</code></pre>
     </section>
